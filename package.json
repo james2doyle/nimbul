@@ -1,0 +1,18 @@
+{
+  "name": "odr-framework",
+  "preferGlobal": "true",
+  "version": "1.0.0",
+  "author": "James Doyle <james2doyle@gmail.com>",
+  "description": "a framework for modern browsers",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-watch": "~0.4.2",
+    "grunt-contrib-stylus": "~0.5.0",
+    "grunt": "~0.4.1",
+    "nib": "~0.9.1",
+    "grunt-contrib-concat": "~0.3.0"
+  }
+}
