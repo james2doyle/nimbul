@@ -1,0 +1,131 @@
+@import "__variables.styl"
+
+MODAL_WIDTH                  = 600px
+MODAL_HEIGHT                 = auto
+MODAL_TOP_DISTANCE           = 50px
+MODAL_BORDER_COLOR           = BLACK
+MODAL_BORDER_RADIUS          = ROUNDED
+MODAL_PADDING                = 1em
+MODAL_ANIM_SPEED             = TRANSITION
+MODAL_EASING                 = ease
+MODAL_Z_INDEX                = 999
+MODAL_OVERLAY_OPACITY        = 0.8
+MODAL_SHADOW                 = true
+
+#modal-overlay
+  background: black
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  opacity: 0
+  z-index: -1
+  transition: opacity MODAL_ANIM_SPEED*2 ease
+  backface-visibility: hidden
+  &.on
+    z-index: MODAL_Z_INDEX
+    opacity: MODAL_OVERLAY_OPACITY
+
+[data-modal]
+  width: MODAL_WIDTH
+  height: MODAL_HEIGHT
+  border: 1px solid MODAL_BORDER_COLOR
+  background: WHITE
+  border-radius: ROUNDED
+  padding: MODAL_PADDING
+  position: fixed
+  left: 50%
+  top: -30px
+  z-index: MODAL_Z_INDEX
+  if MODAL_SHADOW
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5)
+  margin-left: (-@width/2)
+  .modal-title
+    display: inline-block
+    width: 100%
+    .modal-close
+      display: inline-block
+      position: relative
+      float: right
+      top: -25px
+      margin-bottom: -30px
+      color: rgba(0,0,0,0.5)
+      transition: color TRANSITION ease
+      &:hover
+        cursor: pointer
+        color: rgba(0,0,0,1)
+
+
+@media PSCREEN
+  [data-modal]
+    margin-left: 0
+    width: 90%
+    left: 5%
+
+.csstransitions [data-modal]
+  top: -30px
+  transition: top MODAL_ANIM_SPEED MODAL_EASING
+  &.show
+    top: MODAL_TOP_DISTANCE
+  &.hide
+    top: -30px
+
+.csstransforms [data-modal]
+  transition: none
+  transform: translateY(-100%)
+  &.show
+    top: -30px
+    transform: translateY(MODAL_TOP_DISTANCE)
+    animation showModal1 MODAL_ANIM_SPEED both alternate MODAL_EASING
+  &.hide
+    transform: translateY(-100%)
+    animation: hideModal1 MODAL_ANIM_SPEED both alternate MODAL_EASING
+
+.csstransforms3d [data-modal]
+  transition: none
+  transform: translate3d(0,-100%,0)
+  &.show
+    top: -30px
+    transform: translate3d(0, MODAL_TOP_DISTANCE, 0)
+    animation showModal2 MODAL_ANIM_SPEED both alternate MODAL_EASING
+  &.hide
+    transform: translate3d(0,-100%,0)
+    animation: hideModal2 MODAL_ANIM_SPEED both alternate MODAL_EASING
+
+@keyframes showModal
+  0%
+    top: -30px
+  100%
+    top: MODAL_TOP_DISTANCE
+
+@keyframes showModal1
+  0%
+    transform: translateY(-100%)
+  100%
+    transform: translateY(MODAL_TOP_DISTANCE)
+
+@keyframes showModal2
+  0%
+    transform: translate3d(0,-100%,0)
+  100%
+    transform: translate3d(0,MODAL_TOP_DISTANCE,0)
+
+@keyframes hideModal
+  0%
+    top: 100%
+  100%
+    top: -30px
+
+@keyframes hideModal1
+  0%
+    transform: translateY(MODAL_TOP_DISTANCE)
+  100%
+    transform: translateY(-100%)
+
+@keyframes hideModal2
+  0%
+    transform: translate3d(0,MODAL_TOP_DISTANCE,0)
+  100%
+    transform: translate3d(0,-100%,0)
+

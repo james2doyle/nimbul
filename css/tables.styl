@@ -1,0 +1,29 @@
+@import "__variables.styl"
+
+table
+  border: 1px solid TABLE_BORDER_COLOR
+  th, tr, td
+    border: 1px solid TABLE_BORDER_COLOR
+    padding: PADDED
+  th
+    background: TABLE_HEADER_BACKGROUND
+  &.zebra-even
+    tr:nth-child(even)
+      background: TABLE_ZEBRA_BACKGROUND
+  &.zebra-odd
+    tr:nth-child(odd)
+      background: TABLE_ZEBRA_BACKGROUND
+
+@media PSCREEN
+  table
+    width: 100%
+    th, tr, td
+      padding: TABLE_MOBILE_PADDING
+    .priority-3
+      display: none !important
+
+@media SSCREEN
+  table
+    .priority-2
+      display: none !important
+
