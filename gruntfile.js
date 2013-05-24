@@ -2,7 +2,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      files: ['gruntfile.js', 'js/**/*.js'],
+      files: ['gruntfile.js', 'js/**/*.js', '!js/_modernizr.custom.min.js'],
       options: {
         globals: {
           jQuery: true,
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['js/**/*.js'],
+        src: ['js/*.js'],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
     },
@@ -45,16 +45,12 @@ module.exports = function(grunt) {
         }
       }
     },
-    // watch: {
-    //   files: ['<%= jshint.files %>', 'css/*.styl', 'dist/index.html'],
-    //   tasks: ['jshint','concat','uglify', 'clean', 'stylus']
-    // }
     watch: {
       scripts: {
-        files: ['<%= jshint.files %>'],
+        files: ['<%= concat.dist.src %>'],
         tasks: ['jshint', 'concat'],
         options: {
-          nospawn: true
+          // nospawn: true
         }
       },
       styles: {
@@ -74,6 +70,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['jshint','concat','uglify', 'clean', 'stylus']);
+  grunt.registerTask('default', ['jshint','concat','uglify','clean', 'stylus']);
 
 };
