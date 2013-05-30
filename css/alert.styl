@@ -1,0 +1,46 @@
+@import "__variables.styl"
+
+ALERT_TRANSITION            = TRANSITION*2
+ALERT_TEXT_SHADOW           = BUTTON_TEXT_SHADOW
+ALERT_CLOSE_COLOR           = rgba(0,0,0,0.5)
+ALERT_CLOSE_HOVER           = rgba(255,255,255,1)
+
+.alert
+  text-align: center
+  display: block
+  width: 100%
+  padding: PADDED
+  margin-bottom: GRID_BOTTOM_MARGIN
+  border-radius: ROUNDED
+  opacity: 1
+  -webkit-backface-visbility: hidden
+  &.hide
+    opacity: 0
+    animation: hideAlert ALERT_TRANSITION ease
+  &.show
+    opacity: 1
+    animation: showAlert ALERT_TRANSITION ease
+  .close-alert
+    color: ALERT_CLOSE_COLOR
+    float: right
+    padding: 0
+    text-shadow: none
+    transition: color ALERT_TRANSITION ease
+    &:hover
+      color: ALERT_CLOSE_HOVER
+
+@keyframes hideAlert
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
+@keyframes showAlert
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+
+
+
