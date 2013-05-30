@@ -1,20 +1,22 @@
 var pfx = ["webkit", "moz", "MS", "o", ""];
 function doAnim(element, animClass, type, callback) {
-  var p = 0, l = pfx.length;
-  function removeAndCall(){
-    // remove the event listener so it doesnt fire randomly after
-    this.removeEventListener(pfx[p]+type, arguments.callee,false);
-    callback();
-  }
-  for (; p < l; p++) {
-    if (!pfx[p]) {
-      type = type.toLowerCase();
+  (function() {
+    var p = 0, l = pfx.length;
+    function removeAndCall(){
+      // remove the event listener so it doesnt fire randomly after
+      this.removeEventListener(pfx[p]+type, arguments.callee,false);
+      callback();
     }
-    // add the class that starts the animation
-    element.classList.add(animClass);
-    // listen for the event and then fire the callback
-    element.addEventListener(pfx[p]+type, removeAndCall, false);
-  }
+    for (; p < l; p++) {
+      if (!pfx[p]) {
+        type = type.toLowerCase();
+      }
+      // add the class that starts the animation
+      element.classList.add(animClass);
+      // listen for the event and then fire the callback
+      element.addEventListener(pfx[p]+type, removeAndCall, false);
+    }
+  })();
 }
 
 if (!Modernizr.svg) {
