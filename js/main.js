@@ -142,14 +142,14 @@ showModalBtn[act] = function() {
 };
 
 var al = document.getElementsByClassName('alert');
-function alertDone(count) {
-  console.log('hidden alert '+count);
+function alertDone() {
+  console.log('hidden alert');
 }
 
 var alarray = [];
 for (var i = 0; i < al.length; i++) {
   alarray[i] = new Alert(al[i], {
-    onHide: alertDone(i)
+    onHide: alertDone
   });
 }
 
