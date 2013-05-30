@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    clean: ['<%= concat.dist.dest %>', 'dist/js/scripts.min.js'],
     jshint: {
       files: ['gruntfile.js', 'js/**/*.js', '!js/_modernizr.custom.min.js'],
       options: {
@@ -32,7 +33,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    clean: ['<%= concat.dist.dest %>'],
     stylus: {
       compile: {
         options: {
@@ -70,6 +70,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['jshint','concat','uglify','clean', 'stylus']);
+  grunt.registerTask('default', ['clean','jshint','concat','uglify','stylus']);
 
 };
