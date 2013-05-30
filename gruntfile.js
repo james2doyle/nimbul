@@ -62,7 +62,6 @@ module.exports = function(grunt) {
       compile: {
         options: {
           paths: ['css'],
-          // use: [require('css/__init')],
           import: ['../node_modules/nib/lib/nib']
         },
         files: {
