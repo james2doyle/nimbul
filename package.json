@@ -1,9 +1,13 @@
 {
-  "name": "odr-framework",
+  "name": "nimbul-framework",
   "preferGlobal": "true",
   "version": "1.0.0",
   "author": "James Doyle <james2doyle@gmail.com>",
-  "description": "a framework for modern browsers",
+  "description": "Front-end framework for fast, efficient, and bloat-free development",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/james2doyle/nimbul.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt-contrib-jshint": "~0.4.3",
@@ -14,5 +18,6 @@
     "grunt": "~0.4.1",
     "nib": "~0.9.1",
     "grunt-contrib-concat": "~0.3.0"
-  }
+  },
+  "license": "MIT"
 }
