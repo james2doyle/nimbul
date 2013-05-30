@@ -17,7 +17,6 @@ function doAnim(element, animClass, type, callback) {
 var act = (Modernizr.touch) ? 'ontouchend': 'onclick';
 
 var Alert = function(elem, settings) {
-  var act = (Modernizr.touch) ? 'ontouchend': 'onclick';
   var close = elem.getElementsByClassName('close-alert')[0],
   that = this;
   that.show = function() {
@@ -46,8 +45,7 @@ var Alert = function(elem, settings) {
 };
 
 var Modal = function(elem, settings) {
-  var act = (Modernizr.touch) ? 'ontouchend': 'onclick',
-  overlay = document.getElementById('modal-overlay'),
+  var overlay = document.getElementById('modal-overlay'),
   acceptbtn = elem.getElementsByClassName('modal-accept')[0],
   declinebtn = elem.getElementsByClassName('modal-decline')[0],
   closebtn = elem.getElementsByClassName('modal-close')[0],
