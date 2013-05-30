@@ -19,9 +19,12 @@ module.exports = function(grunt) {
         }]
       },
       dist: {
-        files: {
-          'dist/img/*.svg': 'img/*.svg'
-        }
+        files: [{
+          expand: true,
+          cwd: 'img',
+          src: '*.svg',
+          dest: 'dist/img'
+        }]
       }
     },
     jshint: {
