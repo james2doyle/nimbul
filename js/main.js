@@ -2,6 +2,7 @@ var pfx = ["webkit", "moz", "MS", "o", ""];
 function doAnim(element, animClass, type, callback) {
   var p = 0, l = pfx.length;
   function removeAndCall(){
+    // remove the event listener so it doesnt fire randomly after
     this.removeEventListener(pfx[p]+type, arguments.callee,false);
     callback();
   }
@@ -9,11 +10,28 @@ function doAnim(element, animClass, type, callback) {
     if (!pfx[p]) {
       type = type.toLowerCase();
     }
+    // add the class that starts the animation
     element.classList.add(animClass);
+    // listen for the event and then fire the callback
     element.addEventListener(pfx[p]+type, removeAndCall, false);
   }
 }
 
+if (!Modernizr.svg) {
+  // wrap this in a closure to not expose any conflicts
+  (function() {
+    // grab all images. getElementsByTagName works with IE5.5 and up
+    var imgs = document.getElementsByTagName('img'),svg = /.*\.svg$/,i = 0,l = imgs.length;
+    for(; i < l; ++i) {
+      if(imgs[i].src.match(svg)) {
+        // replace the png suffix with the svg one
+        imgs[i].src = imgs[i].src.slice(0, -3) + 'png';
+      }
+    }
+  })();
+}
+
+// used throughout the framework to decide wether or not to use clicks or touches
 var act = (Modernizr.touch) ? 'ontouchend': 'onclick';
 
 var Alert = function(elem, settings) {
