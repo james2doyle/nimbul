@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         files: {
           'dist/img/*.svg': 'img/*.svg'
         }
-      },
+      }
     },
     jshint: {
       files: ['gruntfile.js', 'js/**/*.js', '!js/_modernizr.custom.min.js'],
@@ -87,6 +87,7 @@ module.exports = function(grunt) {
   // add image min
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-svgmin');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
