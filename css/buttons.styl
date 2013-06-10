@@ -42,7 +42,8 @@ makeButton(btnColor, btnBackground)
   font-family: BUTTON_FONT_FAMILY
   outline: 0
   -webkit-font-smoothing: FONT_SMOOTHING
-  border-radius: ROUNDED
+  if BUTTON_ROUNDED
+    border-radius: BUTTON_BORDER_RADIUS
   line-height: BUTTON_LINEHEIGHT
   makeButton(WHITE, BUTTON_DEFAULT_COLOR)
   &.large
